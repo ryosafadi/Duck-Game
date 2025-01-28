@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -8,9 +9,19 @@ public class PlayerMovement : MonoBehaviour
     public float stoppingDistance; // How close the character should get to the mouse before stopping
     private CharacterController characterController;
 
+    public float maxStamina;
+    private float currentStamina;
+    private float staminaDrainRate = 5f;
+    private float dashSpeed = 2.5f;
+    private float dashDuration = 0.75f;
+
+    private bool isDashing = false;
+
     void Start()
     {
         characterController = GetComponent<CharacterController>();
+        currentStamina = maxStamina;
+        // calculate stamina using happiness and health
     }
 
     void Update()
@@ -23,11 +34,44 @@ public class PlayerMovement : MonoBehaviour
         // Calculate the direction to the mouse
         Vector3 direction = (mousePosition - transform.position).normalized;
 
+        if (Input.GetMouseButtonDown(0) && !isDashing && currentStamina > 0)
+        {
+            isDashing = true;
+            StartCoroutine(DashCoroutine());
+        }
+
         // Move the character towards the mouse position
         if (Vector3.Distance(transform.position, mousePosition) > stoppingDistance)
         {
-            characterController.Move(direction * moveSpeed * Time.deltaTime);
+            if (isDashing)
+            {
+                characterController.Move(direction * moveSpeed * dashSpeed * Time.deltaTime);
+                currentStamina -= staminaDrainRate * dashSpeed * Time.deltaTime;
+            }
+            else
+            {
+                characterController.Move(direction * moveSpeed * Time.deltaTime);
+                currentStamina -= staminaDrainRate * Time.deltaTime;
+            }
+            // change to display as a meter
+            Debug.Log("Stamina: " + currentStamina);
         }
+
+        if (currentStamina <= 0f)
+        {
+            SceneManager.LoadScene("Idle Mode");
+        }
+    }
+
+    IEnumerator DashCoroutine()
+    {
+        float dashTime = Time.time + dashDuration;
+
+        while (Time.time < dashTime)
+        {
+            yield return null;
+        }
+        isDashing = false;
     }
 }
 
