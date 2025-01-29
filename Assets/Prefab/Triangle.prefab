@@ -10,11 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6245296704547281819}
   - component: {fileID: 1865975296594121733}
-  - component: {fileID: 5874082298709724818}
   - component: {fileID: 5720556524805513100}
   m_Layer: 0
   m_Name: Triangle
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -86,19 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5874082298709724818
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4491244774129019229}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bab46b6762b4d9946b6dba5e2d3b280a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Fish: {fileID: 4491244774129019229}
 --- !u!65 &5720556524805513100
 BoxCollider:
   m_ObjectHideFlags: 0
