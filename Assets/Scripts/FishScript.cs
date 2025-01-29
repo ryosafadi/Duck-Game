@@ -33,11 +33,10 @@ public class FishScript : MonoBehaviour
     {
         if (collision.CompareTag("Fish"))
         {
-                collision.gameObject.SetActive(false);
-                GameManager.Instance.fishCount++;
-                FishChange();
-                StartCoroutine(Cooldown(10, collision.gameObject));
-            
+            collision.gameObject.SetActive(false);
+            GameManager.Instance.fishCount++;
+            FishChange();
+            StartCoroutine(Cooldown(10, collision.gameObject));
             
         }
         else

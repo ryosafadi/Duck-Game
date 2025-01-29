@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6245296704547281819}
   - component: {fileID: 1865975296594121733}
   - component: {fileID: 5720556524805513100}
+  - component: {fileID: -3387945804127304789}
   m_Layer: 0
   m_Name: Triangle
   m_TagString: Fish
@@ -106,3 +107,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 0.2}
   m_Center: {x: 0, y: 0.21133333, z: 0}
+--- !u!114 &-3387945804127304789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4491244774129019229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72a0e9dff8d7a4b48896632600879995, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Fish: {fileID: 0}
