@@ -25,6 +25,7 @@ public class FishAndForth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Inspired from: https://stackoverflow.com/questions/43009515/move-gameobject-back-and-forth
         float time = Mathf.PingPong(Time.time * speed, 1);
         transform.position = Vector3.Lerp(stopA, stopB, time);
     }
