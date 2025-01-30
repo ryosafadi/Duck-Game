@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public float stoppingDistance; // How close the character should get to the mouse before stopping
     private CharacterController characterController;
 
-    public float maxStamina;
+    public float maxStamina; // placeholder
     private float currentStamina;
     private float staminaDrainRate = 5f;
     private float dashSpeed = 2.5f;
@@ -17,11 +17,12 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isDashing = false;
 
+    // [SerializeField] IdleDuck duck;
     void Start()
     {
         characterController = GetComponent<CharacterController>();
         currentStamina = maxStamina;
-        // calculate stamina using happiness and health
+        // currentStamina = duck.GetStamina();
     }
 
     void Update()
@@ -72,6 +73,11 @@ public class PlayerMovement : MonoBehaviour
             yield return null;
         }
         isDashing = false;
+    }
+
+    public float GetStamina()
+    {
+        return currentStamina;
     }
 }
 
