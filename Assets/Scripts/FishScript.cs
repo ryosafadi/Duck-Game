@@ -7,6 +7,10 @@ public class FishScript : MonoBehaviour
 {
     public GameObject Player;
     public TMP_Text fishCounter;
+
+    public AudioSource audioSource;  
+    public AudioClip fishCollectSound; // Assign this in the Inspector
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +20,11 @@ public class FishScript : MonoBehaviour
             UnityEngine.Debug.Log("Did not show");
         }
         FishChange();
+
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
     }
     
     // Update is called once per frame
@@ -36,6 +45,13 @@ public class FishScript : MonoBehaviour
             collision.gameObject.SetActive(false);
             GameManager.Instance.fishCount++;
             FishChange();
+
+            if (audioSource != null && fishCollectSound != null)
+            {
+                audioSource.PlayOneShot(fishCollectSound);
+            }
+
+
             StartCoroutine(Cooldown(10, collision.gameObject));
             
         }
