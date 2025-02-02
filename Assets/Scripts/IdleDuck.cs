@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class IdleDuck : MonoBehaviour
 {
-    private float happiness = 50;
-    private float hunger = 50;
+    private float happiness = 50f;
+    private float hunger = 50f;
 
-    private readonly float decayRate = 1;
+    private readonly float decayRate = 1f;
 
     private void Update()
     {
-        // Decrease happiness and hunger every second
         happiness = Mathf.Clamp(happiness - decayRate * Time.deltaTime, 0, 100);
         hunger = Mathf.Clamp(hunger - decayRate * Time.deltaTime, 0, 100);
     }
@@ -19,13 +18,11 @@ public class IdleDuck : MonoBehaviour
     public void ModifyHappiness(float amount)
     {
         happiness = Mathf.Clamp(happiness + amount, 0, 100);
-        Debug.Log("Happiness: " + happiness);
     }
 
     public void ModifyHunger(float amount)
     {
         hunger = Mathf.Clamp(hunger + amount, 0, 100);
-        Debug.Log("Hunger: " + hunger);
     }
 
     public float GetHappiness()
