@@ -44,6 +44,7 @@ public class FishScript : MonoBehaviour
         {
             collision.gameObject.SetActive(false);
             GameManager.Instance.fishCount++;
+            IdleDuck.totalFish ++;
             FishChange();
 
             if (audioSource != null && fishCollectSound != null)
@@ -53,7 +54,6 @@ public class FishScript : MonoBehaviour
 
 
             StartCoroutine(Cooldown(10, collision.gameObject));
-            
         }
         else
         {
