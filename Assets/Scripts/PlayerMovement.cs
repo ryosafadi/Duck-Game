@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float maxStamina; // placeholder
     private float currentStamina;
-    private float staminaDrainRate = 5f;
+    private float staminaDrainRate = 3.5f;
     private float dashSpeed = 2.5f;
     private float dashDuration = 0.75f;
 
