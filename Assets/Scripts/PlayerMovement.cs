@@ -5,11 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed;
+    //public float moveSpeed;
     public float stoppingDistance; // How close the character should get to the mouse before stopping
     private CharacterController characterController;
 
-    public float maxStamina; // placeholder
+   // public float maxStamina; // placeholder
     private float currentStamina;
     private float staminaDrainRate = 3.5f;
     private float dashSpeed = 2.5f;
@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         characterController = GetComponent<CharacterController>();
-        currentStamina = maxStamina;
+        currentStamina = IdleDuck.stamina;
         // currentStamina = duck.GetStamina();
     }
 
@@ -46,12 +46,12 @@ public class PlayerMovement : MonoBehaviour
         {
             if (isDashing)
             {
-                characterController.Move(direction * moveSpeed * dashSpeed * Time.deltaTime);
+                characterController.Move(direction * IdleDuck.speed * dashSpeed * Time.deltaTime);
                 currentStamina -= staminaDrainRate * dashSpeed * Time.deltaTime;
             }
             else
             {
-                characterController.Move(direction * moveSpeed * Time.deltaTime);
+                characterController.Move(direction * IdleDuck.speed * Time.deltaTime);
                 currentStamina -= staminaDrainRate * Time.deltaTime;
             }
             // change to display as a meter

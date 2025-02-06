@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8174139555487914597}
   m_Layer: 0
   m_Name: goldenShiner
-  m_TagString: Fish
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

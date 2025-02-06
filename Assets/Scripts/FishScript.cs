@@ -40,11 +40,42 @@ public class FishScript : MonoBehaviour
 
     void OnTriggerEnter(Collider collision)
     {
-        if (collision.CompareTag("Fish"))
+        //Hopefully there's a better way to do this but I can't right now
+        if (collision.CompareTag("Silver"))
         {
             collision.gameObject.SetActive(false);
             GameManager.Instance.fishCount++;
-            IdleDuck.totalFish ++;
+            IdleDuck.silverFish ++;
+            FishChange();
+
+            if (audioSource != null && fishCollectSound != null)
+            {
+                audioSource.PlayOneShot(fishCollectSound);
+            }
+
+
+            StartCoroutine(Cooldown(10, collision.gameObject));
+        }
+        else if (collision.CompareTag("Red"))
+        {
+            collision.gameObject.SetActive(false);
+            GameManager.Instance.fishCount++;
+            IdleDuck.redFish ++;
+            FishChange();
+
+            if (audioSource != null && fishCollectSound != null)
+            {
+                audioSource.PlayOneShot(fishCollectSound);
+            }
+
+
+            StartCoroutine(Cooldown(10, collision.gameObject));
+        }
+        else if (collision.CompareTag("Green"))
+        {
+            collision.gameObject.SetActive(false);
+            GameManager.Instance.fishCount++;
+            IdleDuck.greenFish ++;
             FishChange();
 
             if (audioSource != null && fishCollectSound != null)
