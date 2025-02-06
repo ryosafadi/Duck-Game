@@ -1610,9 +1610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ff2887612b217d429cb4771328beccc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 6
   stoppingDistance: 0.15
-  maxStamina: 100
 --- !u!143 &1346919891
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1701,7 +1699,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.4045205, y: 0.34239542, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -3051,7 +3049,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5631969519262690917, guid: e842e995ff628465f853da21db43815a, type: 3}
       propertyPath: m_TagString
-      value: Fish
+      value: Silver
       objectReference: {fileID: 0}
     - target: {fileID: 8567203438712790173, guid: e842e995ff628465f853da21db43815a, type: 3}
       propertyPath: m_LocalPosition.x

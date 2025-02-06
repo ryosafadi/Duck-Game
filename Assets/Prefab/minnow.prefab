@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3266788202785211952}
   m_Layer: 0
   m_Name: minnow
-  m_TagString: Fish
+  m_TagString: Silver
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
