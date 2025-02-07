@@ -55,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
                 currentStamina -= staminaDrainRate * Time.deltaTime;
             }
             // change to display as a meter
-            Debug.Log("Stamina: " + currentStamina);
+            //Debug.Log("Stamina: " + currentStamina);
         }
 
         if (currentStamina <= 0f)
