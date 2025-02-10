@@ -16,11 +16,9 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isDashing = false;
 
-    // [SerializeField] IdleDuck duck;
     void Start()
     {
         characterController = GetComponent<CharacterController>();
-        // currentStamina = duck.GetStamina();
     }
 
     void Update()
@@ -52,8 +50,6 @@ public class PlayerMovement : MonoBehaviour
                 characterController.Move(direction * IdleDuck.speed * Time.deltaTime);
                 IdleDuck.stamina -= staminaDrainRate * Time.deltaTime;
             }
-            // change to display as a meter
-            Debug.Log("Stamina: " + IdleDuck.stamina);
         }
 
         if (IdleDuck.stamina <= 0f)
