@@ -5,8 +5,8 @@ using TMPro;
 
 public class IdleDuck : MonoBehaviour
 {
-    private float happiness = 100f;
-    private float hunger = 100f;
+    private static float happiness = 100f;
+    private static float hunger = 100f;
     private static int currLevel = 1;
     private static int expThresh = 100;
     private static int exp = 0;
