@@ -1,5 +1,6 @@
 using UnityEngine;
 
+//Controls how fish run away from the player
 public class RunAwayFromPlayer : MonoBehaviour
 {
     public float speed = 1.5f; // Speed of movement (slower than the player)

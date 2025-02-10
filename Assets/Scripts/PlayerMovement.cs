@@ -10,7 +10,6 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController characterController;
 
    // public float maxStamina; // placeholder
-    private float currentStamina;
     private float staminaDrainRate = 3.5f;
     private float dashSpeed = 2.5f;
     private float dashDuration = 0.75f;
@@ -21,7 +20,6 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         characterController = GetComponent<CharacterController>();
-        currentStamina = IdleDuck.stamina;
         // currentStamina = duck.GetStamina();
     }
 
@@ -35,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
         // Calculate the direction to the mouse
         Vector3 direction = (mousePosition - transform.position).normalized;
 
-        if (Input.GetMouseButtonDown(0) && !isDashing && currentStamina > 0)
+        if (Input.GetMouseButtonDown(0) && !isDashing && IdleDuck.stamina > 0)
         {
             isDashing = true;
             StartCoroutine(DashCoroutine());
@@ -47,18 +45,18 @@ public class PlayerMovement : MonoBehaviour
             if (isDashing)
             {
                 characterController.Move(direction * IdleDuck.speed * dashSpeed * Time.deltaTime);
-                currentStamina -= staminaDrainRate * dashSpeed * Time.deltaTime;
+                IdleDuck.stamina -= staminaDrainRate * dashSpeed * Time.deltaTime;
             }
             else
             {
                 characterController.Move(direction * IdleDuck.speed * Time.deltaTime);
-                currentStamina -= staminaDrainRate * Time.deltaTime;
+                IdleDuck.stamina -= staminaDrainRate * Time.deltaTime;
             }
             // change to display as a meter
-            Debug.Log("Stamina: " + currentStamina);
+            Debug.Log("Stamina: " + IdleDuck.stamina);
         }
 
-        if (currentStamina <= 0f)
+        if (IdleDuck.stamina <= 0f)
         {
             SceneManager.LoadScene("Idle Mode");
         }
@@ -77,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float GetStamina()
     {
-        return currentStamina;
+        return IdleDuck.stamina;
     }
 }
 
