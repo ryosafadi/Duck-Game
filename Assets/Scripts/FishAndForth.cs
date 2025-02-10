@@ -10,13 +10,12 @@ public class FishAndForth : MonoBehaviour
     private Vector3 playerMove;
     private Vector3 stopA;
     private Vector3 stopB;
-    private float speed = 1.19f;
     // Start is called before the first frame update
     void Start()
     {
        playerMove = Fish.transform.position;
        stopA = new Vector3(0, 0, 0);
-        int move = UnityEngine.Random.Range(4, 10);
+        int move = UnityEngine.Random.Range(4, 15);
        stopB = new Vector3(move, 0, 0);
         stopB += playerMove;
         stopA += playerMove;
@@ -26,7 +25,7 @@ public class FishAndForth : MonoBehaviour
     void Update()
     {
         // Inspired from: https://stackoverflow.com/questions/43009515/move-gameobject-back-and-forth
-        float time = Mathf.PingPong(Time.time * speed, 1);
+        float time = Mathf.PingPong(Time.time * IdleDuck.speed, 1);
         transform.position = Vector3.Lerp(stopA, stopB, time);
     }
 }

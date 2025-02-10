@@ -5,13 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed;
+    //public float moveSpeed;
     public float stoppingDistance; // How close the character should get to the mouse before stopping
     private CharacterController characterController;
 
-    public float maxStamina;
-    private float currentStamina;
-    private float staminaDrainRate = 5f;
+   // public float maxStamina; // placeholder
+    private float staminaDrainRate = 3.5f;
     private float dashSpeed = 2.5f;
     private float dashDuration = 0.75f;
 
@@ -20,8 +19,6 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         characterController = GetComponent<CharacterController>();
-        currentStamina = maxStamina;
-        // calculate stamina using happiness and health
     }
 
     void Update()
@@ -34,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
         // Calculate the direction to the mouse
         Vector3 direction = (mousePosition - transform.position).normalized;
 
-        if (Input.GetMouseButtonDown(0) && !isDashing && currentStamina > 0)
+        if (Input.GetMouseButtonDown(0) && !isDashing && IdleDuck.stamina > 0)
         {
             isDashing = true;
             StartCoroutine(DashCoroutine());
@@ -45,19 +42,17 @@ public class PlayerMovement : MonoBehaviour
         {
             if (isDashing)
             {
-                characterController.Move(direction * moveSpeed * dashSpeed * Time.deltaTime);
-                currentStamina -= staminaDrainRate * dashSpeed * Time.deltaTime;
+                characterController.Move(direction * IdleDuck.speed * dashSpeed * Time.deltaTime);
+                IdleDuck.stamina -= staminaDrainRate * dashSpeed * Time.deltaTime;
             }
             else
             {
-                characterController.Move(direction * moveSpeed * Time.deltaTime);
-                currentStamina -= staminaDrainRate * Time.deltaTime;
+                characterController.Move(direction * IdleDuck.speed * Time.deltaTime);
+                IdleDuck.stamina -= staminaDrainRate * Time.deltaTime;
             }
-            // change to display as a meter
-            Debug.Log("Stamina: " + currentStamina);
         }
 
-        if (currentStamina <= 0f)
+        if (IdleDuck.stamina <= 0f)
         {
             SceneManager.LoadScene("Idle Mode");
         }
@@ -72,6 +67,11 @@ public class PlayerMovement : MonoBehaviour
             yield return null;
         }
         isDashing = false;
+    }
+
+    public float GetStamina()
+    {
+        return IdleDuck.stamina;
     }
 }
 
