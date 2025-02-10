@@ -1,5 +1,6 @@
 using UnityEngine;
 
+//Controls the random movement of fish in the active scene
 public class RandomMovement : MonoBehaviour
 {
     public float speed = 2f; // Speed of movement

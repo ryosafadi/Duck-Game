@@ -15,7 +15,7 @@ public class StaminaDisplay : MonoBehaviour
 
     void Update()
     {
-        float currentStamina = player.GetStamina();
+        float currentStamina = IdleDuck.stamina;
 
         staminaBar.fillAmount = currentStamina / 100f;
     }
