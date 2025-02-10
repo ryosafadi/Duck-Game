@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using TMPro.Examples;
 
 public class IdleDuck : MonoBehaviour
 {
@@ -33,8 +34,13 @@ public class IdleDuck : MonoBehaviour
 
     private readonly float decayRate = 1f;
 
+    private SpriteRenderer spriteRenderer;
+
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.color = CustomizationManager.Instance.GetColor();
+
         UpdateFish();
         UpdateLevel();
         UpdateSpeed();
