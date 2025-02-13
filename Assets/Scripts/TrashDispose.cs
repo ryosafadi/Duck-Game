@@ -20,6 +20,10 @@ public class TrashDispose : MonoBehaviour
 
     void Start()
     {
+        if(player == null)
+        {
+            player = GameObject.FindWithTag("Player");
+        }
         playerCC = player.GetComponent<CharacterController>();
     }
 
