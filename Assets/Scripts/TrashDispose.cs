@@ -7,6 +7,9 @@ public class TrashDispose : MonoBehaviour
     [SerializeField] float knockbackDuration = 0.5f;
     [SerializeField] float knockbackDelay = 1.0f;    // in seconds
 
+    [SerializeField] private AudioClip hitSound; //assign in inspector
+
+
     [SerializeField] GameObject player;
 
     // We'll track the knockback timing on the player
@@ -18,6 +21,8 @@ public class TrashDispose : MonoBehaviour
 
     private CharacterController playerCC;
 
+    private AudioSource audioSource;
+
     void Start()
     {
         if(player == null)
@@ -25,6 +30,8 @@ public class TrashDispose : MonoBehaviour
             player = GameObject.FindWithTag("Player");
         }
         playerCC = player.GetComponent<CharacterController>();
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -55,6 +62,11 @@ public class TrashDispose : MonoBehaviour
                 // Begin knockback
                 knockbackTimer = knockbackDuration;
                 knockbackDirection = (player.transform.position - transform.position).normalized;
+
+                if (hitSound != null && audioSource != null)
+                {
+                    audioSource.PlayOneShot(hitSound);
+                }
 
                 // Reset the attack cooldown
                 attackCooldownTimer = knockbackDelay;
