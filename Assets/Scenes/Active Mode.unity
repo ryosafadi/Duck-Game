@@ -3049,6 +3049,7 @@ MonoBehaviour:
   knockbackPower: 10
   knockbackDuration: 0.5
   knockbackDelay: 1
+  hitSound: {fileID: 8300000, guid: 469de16d0a9d54e18a9375aa91485548, type: 3}
   player: {fileID: 1346919889}
 --- !u!212 &1607426196
 SpriteRenderer:
