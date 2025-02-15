@@ -3,29 +3,37 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using UnityEngine;
-
 public class FishAndForth : MonoBehaviour
 {
     public GameObject Fish;
-    private Vector3 playerMove;
     private Vector3 stopA;
     private Vector3 stopB;
-    // Start is called before the first frame update
+    private Vector3 originalScale; 
+
     void Start()
     {
-       playerMove = Fish.transform.position;
-       stopA = new Vector3(0, 0, 0);
+        Vector3 playerMove = Fish.transform.position;
+        stopA = playerMove;
+
         int move = UnityEngine.Random.Range(4, 15);
-       stopB = new Vector3(move, 0, 0);
-        stopB += playerMove;
-        stopA += playerMove;
+        stopB = new Vector3(move, 0, 0) + playerMove;
+
+        originalScale = transform.localScale; // Save the original scale
     }
 
-    // Update is called once per frame
     void Update()
     {
-        // Inspired from: https://stackoverflow.com/questions/43009515/move-gameobject-back-and-forth
+         // Inspired from: https://stackoverflow.com/questions/43009515/move-gameobject-back-and-forth
         float time = Mathf.PingPong(Time.time * IdleDuck.speed, 1);
-        transform.position = Vector3.Lerp(stopA, stopB, time);
+        Vector3 newPosition = Vector3.Lerp(stopA, stopB, time);
+
+        Vector3 movementDirection = newPosition - transform.position;
+
+        transform.position = newPosition;
+
+        if (movementDirection.x > 0) // Moving right
+            transform.localScale = new Vector3(-Mathf.Abs(originalScale.x), originalScale.y, originalScale.z); // Flip left
+        else if (movementDirection.x < 0) // Moving left
+            transform.localScale = new Vector3(Mathf.Abs(originalScale.x), originalScale.y, originalScale.z); // Flip right
     }
 }
