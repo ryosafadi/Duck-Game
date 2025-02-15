@@ -1,20 +1,22 @@
 using UnityEngine;
 
-//Controls how fish run away from the player
+// Controls how fish run away from the player while facing the correct direction
 public class RunAwayFromPlayer : MonoBehaviour
 {
-    public float speed = 1.5f; // Speed of movement (slower than the player)
-    public Transform player; // Reference to the player
+    public float speed = 1.5f; 
+    public Transform player; 
+    public float rotationSpeed = 5f; 
 
     void Update()
     {
         if (player != null)
         {
-            // Calculate direction away from the player
             Vector2 direction = (transform.position - player.position).normalized;
 
-            // Move away from the player
-            transform.Translate(direction * speed * Time.deltaTime);
+            transform.Translate(direction * speed * Time.deltaTime, Space.World);
+
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, angle + 180), Time.deltaTime * rotationSpeed);
         }
     }
 }
