@@ -32,12 +32,18 @@ public class IdleDuck : MonoBehaviour
     public static int redFish;
     public static int greenFish;
 
+    private AudioSource ourAudioSource;
+    [SerializeField] private AudioClip Quack;
+    [SerializeField] private AudioClip Munch;
+
     private readonly float decayRate = 1f;
 
     private SpriteRenderer spriteRenderer;
 
     void Start()
     {
+        ourAudioSource = GetComponent<AudioSource>();
+
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.color = CustomizationManager.Instance.GetColor();
 
@@ -87,12 +93,14 @@ public class IdleDuck : MonoBehaviour
 
     public void ModifyHappiness(float amount)
     {
+        ourAudioSource.PlayOneShot(Quack);
         happiness = Mathf.Clamp(happiness + amount, 0, maxHappiness);
     }
 
     public void FeedSilver(float amount)
     {
         if(silverFish > 0){
+            ourAudioSource.PlayOneShot(Munch);
             hunger = Mathf.Clamp(hunger + amount, 0, maxHunger);
             exp += 7;
             silverFish--;
@@ -103,6 +111,7 @@ public class IdleDuck : MonoBehaviour
     public void FeedRed(float amount)
     {
         if(redFish > 0){
+            ourAudioSource.PlayOneShot(Munch);
             hunger = Mathf.Clamp(hunger + amount, 0, maxHunger);
             exp += 13;
             redFish--;
@@ -113,6 +122,7 @@ public class IdleDuck : MonoBehaviour
     public void FeedGreen(float amount)
     {
         if(greenFish > 0){
+            ourAudioSource.PlayOneShot(Munch);
             hunger = Mathf.Clamp(hunger + amount, 0, maxHunger);
             exp += 20;
             greenFish--;
@@ -121,21 +131,25 @@ public class IdleDuck : MonoBehaviour
     }
 
     public void IncreaseHunger(){
+        ourAudioSource.PlayOneShot(Quack);
         maxHunger += 5f;
         skillPoints --;
     }
 
     public void IncreaseHappiness(){
+        ourAudioSource.PlayOneShot(Quack);
         maxHappiness += 5f;
         skillPoints --;
     }
 
     public void IncreaseStamina(){
+        ourAudioSource.PlayOneShot(Quack);
         maxStamina += 5f;
         skillPoints --;
     }
 
     public void IncreaseSpeed(){
+        ourAudioSource.PlayOneShot(Quack);
         speed += 0.2f;
         skillPoints --;
     }
