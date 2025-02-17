@@ -16,9 +16,13 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isDashing = false;
 
+    [SerializeField] private AudioClip Dash;
+    private AudioSource moveAudioSource;
+
     void Start()
     {
         characterController = GetComponent<CharacterController>();
+        moveAudioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -34,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && !isDashing && IdleDuck.stamina > 0)
         {
             isDashing = true;
+            moveAudioSource.PlayOneShot(Dash);
             StartCoroutine(DashCoroutine());
         }
 
