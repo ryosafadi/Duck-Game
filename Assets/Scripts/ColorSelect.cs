@@ -24,4 +24,16 @@ public class ColorSelect : MonoBehaviour
         CustomizationManager.Instance.SetColor(color);
         spriteRenderer.color = color;
     }
+    public void PlayerPink()
+    {
+        Color color = new Color(255f / 255f, 136f / 255f, 203f / 255f);
+        CustomizationManager.Instance.SetColor(color);
+        spriteRenderer.color = color;
+    }
+    public void PlayerGreen()
+    {
+        Color color = new Color(115f / 255f, 234f / 255f, 114f / 255f);
+        CustomizationManager.Instance.SetColor(color);
+        spriteRenderer.color = color;
+    }
 }
