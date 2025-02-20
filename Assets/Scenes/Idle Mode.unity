@@ -659,7 +659,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -37.4, y: 18.3}
+  m_AnchoredPosition: {x: -37.399902, y: 18.300049}
   m_SizeDelta: {x: 34.649994, y: 34.649994}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &29703666
@@ -1518,13 +1518,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedColor: {r: 1, g: 1, b: 1, a: 1}
-  toggleGroup: {fileID: 1030960675}
-  toggles:
-  - {fileID: 365164692}
-  - {fileID: 396245502}
-  - {fileID: 41664972}
-  - {fileID: 1854671694}
-  - {fileID: 842301552}
 --- !u!4 &161202797
 Transform:
   m_ObjectHideFlags: 0
@@ -8200,7 +8193,7 @@ Transform:
   m_GameObject: {fileID: 1195449617}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.11850555, w: 0.9929534}
-  m_LocalPosition: {x: 2.8916547, y: 2.8149576, z: 0}
+  m_LocalPosition: {x: 3.12, y: 2.94, z: 0}
   m_LocalScale: {x: 1, y: 0.85714287, z: 1.4285713}
   m_ConstrainProportionsScale: 0
   m_Children: []
