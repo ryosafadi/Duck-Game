@@ -12,7 +12,8 @@ public class IdleDuck : MonoBehaviour
     public static float maxHunger = 100f;
     public static float stamina = 100f;
     public static float maxStamina = 100f;
-    public static float speed = 1.19f;
+    public static float actualSpeed = 1.19f;
+    private static int speedLevel = 1;
 
     private static int currLevel = 1;
     private static int expThresh = 100;
@@ -35,6 +36,8 @@ public class IdleDuck : MonoBehaviour
     private AudioSource ourAudioSource;
     [SerializeField] private AudioClip Quack;
     [SerializeField] private AudioClip Munch;
+    [SerializeField] private AudioClip Select;
+    [SerializeField] private AudioClip Exit;
 
     private readonly float decayRate = 1f;
 
@@ -53,14 +56,15 @@ public class IdleDuck : MonoBehaviour
         UpdateSpeed();
     }
 
-    private void Update()
+    void Update()
     {
         happiness = Mathf.Clamp(happiness - decayRate * Time.deltaTime, 0, maxHappiness);
         hunger = Mathf.Clamp(hunger - decayRate * Time.deltaTime, 0, maxHunger);
         stamina = Mathf.Clamp(stamina + (decayRate*2) * Time.deltaTime, 0, maxStamina);
-        hungerBarText.text = hunger + " / " + maxHunger;
-        happinessBarText.text = happiness + " / " + maxHappiness;
-        staminaBarText.text = stamina + " / " + maxStamina;
+        UpdateHunger();
+        UpdateHappiness();
+        UpdateStamina();
+        UpdateSpeed();
         if(exp >= expThresh){
             levelUp();
         }
@@ -72,7 +76,7 @@ public class IdleDuck : MonoBehaviour
         currLevel += 1;
         exp = 0;
         expThresh += 20;
-        UpdateFish();
+        UpdateLevel();
     }
 
     void UpdateLevel()
@@ -82,7 +86,22 @@ public class IdleDuck : MonoBehaviour
 
     void UpdateSpeed()
     {
-        speedCounter.text = "Speed = " + speed;
+        speedCounter.text = "Speed = " + speedLevel;
+    }
+
+    void UpdateHunger()
+    {
+        hungerBarText.text = Mathf.Floor(hunger) + " / " + maxHunger;
+    }
+
+    void UpdateHappiness()
+    {
+        happinessBarText.text = Mathf.Floor(happiness) + " / " + maxHappiness;
+    }
+
+    void UpdateStamina()
+    {
+        staminaBarText.text = Mathf.Floor(stamina) + " / " + maxStamina;
     }
 
     void UpdateFish()
@@ -103,7 +122,7 @@ public class IdleDuck : MonoBehaviour
         if(silverFish > 0){
             ourAudioSource.PlayOneShot(Munch);
             hunger = Mathf.Clamp(hunger + amount, 0, maxHunger);
-            exp += 7;
+            exp += 100; //for the sake of playtesting, the exp is lower than it should be
             silverFish--;
             UpdateFish();
         }
@@ -114,7 +133,7 @@ public class IdleDuck : MonoBehaviour
         if(redFish > 0){
             ourAudioSource.PlayOneShot(Munch);
             hunger = Mathf.Clamp(hunger + amount, 0, maxHunger);
-            exp += 13;
+            exp += 23;
             redFish--;
             UpdateFish();
         }
@@ -125,7 +144,7 @@ public class IdleDuck : MonoBehaviour
         if(greenFish > 0){
             ourAudioSource.PlayOneShot(Munch);
             hunger = Mathf.Clamp(hunger + amount, 0, maxHunger);
-            exp += 20;
+            exp += 31;
             greenFish--;
             UpdateFish();
         }
@@ -151,7 +170,8 @@ public class IdleDuck : MonoBehaviour
 
     public void IncreaseSpeed(){
         ourAudioSource.PlayOneShot(Quack);
-        speed += 0.2f;
+        actualSpeed += 0.2f;
+        speedLevel += 1;
         skillPoints --;
     }
 

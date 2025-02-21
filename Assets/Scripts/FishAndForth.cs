@@ -24,7 +24,7 @@ public class FishAndForth : MonoBehaviour
     void Update()
     {
          // Inspired from: https://stackoverflow.com/questions/43009515/move-gameobject-back-and-forth
-        float time = Mathf.PingPong(Time.time * IdleDuck.speed, 1);
+        float time = Mathf.PingPong(Time.time * IdleDuck.actualSpeed, 1);
         Vector3 newPosition = Vector3.Lerp(stopA, stopB, time);
 
         Vector3 movementDirection = newPosition - transform.position;

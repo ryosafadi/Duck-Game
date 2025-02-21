@@ -47,12 +47,12 @@ public class PlayerMovement : MonoBehaviour
         {
             if (isDashing)
             {
-                characterController.Move(direction * IdleDuck.speed * dashSpeed * Time.deltaTime);
+                characterController.Move(direction * IdleDuck.actualSpeed * dashSpeed * Time.deltaTime);
                 IdleDuck.stamina -= staminaDrainRate * dashSpeed * Time.deltaTime;
             }
             else
             {
-                characterController.Move(direction * IdleDuck.speed * Time.deltaTime);
+                characterController.Move(direction * IdleDuck.actualSpeed * Time.deltaTime);
                 IdleDuck.stamina -= staminaDrainRate * Time.deltaTime;
             }
         }
