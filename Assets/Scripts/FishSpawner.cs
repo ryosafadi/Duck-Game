@@ -13,80 +13,58 @@ public class FishSpawner : MonoBehaviour
     }
 
     public List<FishSpawnData> fishToSpawn; // List of fish and their spawn weights
-    public float spawnInterval = 2f;       // Time between spawns
     public Transform spawnArea;            // Area where fish can spawn
-    public Transform player;               // Reference to the player (to check depth)
     public float shallowDepth = -5f;       // Y position for shallow depth
     public float mediumDepth = -15f;       // Y position for medium depth
 
-    private float timer;
-
     void Start()
     {
-        timer = spawnInterval; // Start spawning immediately
-    }
-
-    void Update()
-    {
-        // Move the spawn area to follow the player
-        if (spawnArea != null && player != null)
-        {
-            spawnArea.position = new Vector3(player.position.x, player.position.y, spawnArea.position.z);
-        }
-
-        timer -= Time.deltaTime;
-
-        if (timer <= 0f)
-        {
-            SpawnFish();
-            timer = spawnInterval; // Reset the timer
-        }
+        SpawnFish();
     }
 
     void SpawnFish()
     {
-        // Get the player's current depth
-        float playerDepth = player.position.y;
-
-        // Calculate total weight based on depth
-        float totalWeight = 0f;
-        foreach (var fishData in fishToSpawn)
+        for (int i = 0; i < 50; i++)
         {
-            totalWeight += GetWeightForDepth(fishData, playerDepth);
-        }
+            Vector3 pos = GetRandomSpawnPosition();
 
-        // Pick a random weight value
-        float randomValue = Random.Range(0f, totalWeight);
-
-        // Determine which fish to spawn based on the random value
-        foreach (var fishData in fishToSpawn)
-        {
-            float weight = GetWeightForDepth(fishData, playerDepth);
-            if (randomValue < weight)
+            // Calculate total weight based on depth
+            float totalWeight = 0f;
+            foreach (var fishData in fishToSpawn)
             {
-                Spawn(fishData.fishPrefab);
-                return;
+                totalWeight += GetWeightForDepth(fishData, pos);
             }
-            randomValue -= weight;
+
+            // Pick a random weight value
+            float randomValue = Random.Range(0f, totalWeight);
+
+            // Determine which fish to spawn based on the random value
+            foreach (var fishData in fishToSpawn)
+            {
+                float weight = GetWeightForDepth(fishData, pos);
+                if (randomValue < weight)
+                {
+                    Spawn(fishData.fishPrefab);
+                    break;
+                }
+                randomValue -= weight;
+            }
         }
     }
 
-    float GetWeightForDepth(FishSpawnData fishData, float playerDepth)
+    float GetWeightForDepth(FishSpawnData fishData, Vector3 spawnPos)
     {
-        // Determine spawn weight based on player depth
-        if (playerDepth > shallowDepth)
+        // Determine spawn weight based on spawn position
+        if (spawnPos.y > shallowDepth)
         {
-            Debug.Log("Player is in SHALLOW depth zone.");
             return fishData.shallowWeight; // Shallow depth
         }
-        else if (playerDepth > mediumDepth)
+        else if (spawnPos.y > mediumDepth)
         {
-            Debug.Log("Player is in MEDIUM depth zone.");
             return fishData.mediumWeight;  // Medium depth
         }
         else
         {
-            Debug.Log("Player is in DEEP depth zone.");
             return fishData.deepWeight;    // Deep depth
         }
     }
