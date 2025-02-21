@@ -3,12 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using UnityEngine;
+
 public class FishAndForth : MonoBehaviour
 {
     public GameObject Fish;
     private Vector3 stopA;
     private Vector3 stopB;
-    private Vector3 originalScale; 
 
     void Start()
     {
@@ -17,8 +17,6 @@ public class FishAndForth : MonoBehaviour
 
         int move = UnityEngine.Random.Range(4, 15);
         stopB = new Vector3(move, 0, 0) + playerMove;
-
-        originalScale = transform.localScale; // Save the original scale
     }
 
     void Update()
@@ -32,8 +30,8 @@ public class FishAndForth : MonoBehaviour
         transform.position = newPosition;
 
         if (movementDirection.x > 0) // Moving right
-            transform.localScale = new Vector3(-Mathf.Abs(originalScale.x), originalScale.y, originalScale.z); // Flip left
+            transform.rotation = Quaternion.Euler(0, 180, 0); // Flip left
         else if (movementDirection.x < 0) // Moving left
-            transform.localScale = new Vector3(Mathf.Abs(originalScale.x), originalScale.y, originalScale.z); // Flip right
+            transform.rotation = Quaternion.Euler(0, 0, 0); // Flip right
     }
 }
