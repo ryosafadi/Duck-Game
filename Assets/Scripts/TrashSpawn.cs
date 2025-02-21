@@ -46,9 +46,9 @@ public class TrashSpawn : MonoBehaviour
         }
         
         Vector3 spawnPosition = GetTopOfCameraPosition();
-        if(trashPrefab.active == false)
+        if(trashPrefab.activeSelf == false)
         {
-            trashPrefab.active = true;
+            trashPrefab.SetActive(true);
         }
         Instantiate(trashPrefab, spawnPosition, Quaternion.identity);
     }
