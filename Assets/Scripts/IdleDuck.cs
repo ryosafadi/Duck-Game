@@ -39,6 +39,7 @@ public class IdleDuck : MonoBehaviour
     private readonly float decayRate = 1f;
 
     private SpriteRenderer spriteRenderer;
+    private SpriteRenderer spriteAccessory;
 
     void Start()
     {
