@@ -15,8 +15,12 @@ public class HideButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(IdleDuck.skillPoints);
         if(IdleDuck.skillPoints <= 0){
             buttonToHide.gameObject.SetActive(false);
+        }
+        if(IdleDuck.skillPoints > 0){
+            buttonToHide.gameObject.SetActive(true);
         }
     }
 }
