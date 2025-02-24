@@ -8,10 +8,14 @@ public class TrashSpawn : MonoBehaviour
 {
     [Header("Trash Prefab")]
     public GameObject trashPrefab;  // Assign your trash prefab here
+    public GameObject trashPrefab2;
+    public GameObject trashPrefab3;
+    private GameObject spawningPrefab;
 
     [Header("Spawn Settings")]
     public float spawnInterval = 5f;   // How often (in seconds) to spawn
     private float timer;
+    private float randomGeneration;
 
     [Header("Camera Reference")]
     public Camera mainCamera;          // Reference to your orthographic camera
@@ -44,13 +48,25 @@ public class TrashSpawn : MonoBehaviour
             UnityEngine.Debug.LogWarning("Missing trash prefab or camera reference.");
             return;
         }
-        
-        Vector3 spawnPosition = GetTopOfCameraPosition();
-        if(trashPrefab.activeSelf == false)
+        randomGeneration = UnityEngine.Random.Range(0, 3);
+        if(randomGeneration == 0)
         {
-            trashPrefab.SetActive(true);
+            spawningPrefab = trashPrefab;
         }
-        Instantiate(trashPrefab, spawnPosition, Quaternion.identity);
+        else if(randomGeneration == 1)
+        {
+            spawningPrefab = trashPrefab2;
+        }
+        else
+        {
+            spawningPrefab = trashPrefab3;
+        }
+        Vector3 spawnPosition = GetTopOfCameraPosition();
+        if(spawningPrefab.activeSelf == false)
+        {
+            spawningPrefab.SetActive(true);
+        }
+        Instantiate(spawningPrefab, spawnPosition, Quaternion.identity);
     }
 
     /// <summary>
@@ -68,11 +84,11 @@ public class TrashSpawn : MonoBehaviour
         float camAspect = mainCamera.aspect;             // width/height ratio
 
         // Calculate top edge (Y)
-        float topEdge = camY + camSize;
+        float topEdge = camY + 5 + camSize;
 
         // Calculate left & right edges (X)
-        float leftEdge = camX - (camSize * camAspect);
-        float rightEdge = camX + (camSize * camAspect);
+        float leftEdge = camX - (camSize * camAspect) + 10;
+        float rightEdge = camX + (camSize * camAspect) - 10;
 
         // Pick a random X between left and right
         float randomX = UnityEngine.Random.Range(leftEdge, rightEdge);
