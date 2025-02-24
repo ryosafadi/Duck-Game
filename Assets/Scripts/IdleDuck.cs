@@ -6,6 +6,8 @@ using TMPro.Examples;
 
 public class IdleDuck : MonoBehaviour
 {
+    public static float health = 100f;
+    public static float maxHealth = 100f;
     public static float happiness = 100f;
     public static float maxHappiness = 100f;
     public static float hunger = 100f;
@@ -28,6 +30,7 @@ public class IdleDuck : MonoBehaviour
     public TMP_Text hungerBarText;
     public TMP_Text happinessBarText;
     public TMP_Text staminaBarText;
+    public TMP_Text healthBarText;
 
     public static int silverFish;
     public static int redFish;
@@ -39,7 +42,10 @@ public class IdleDuck : MonoBehaviour
     [SerializeField] private AudioClip Select;
     [SerializeField] private AudioClip Exit;
 
-    private readonly float decayRate = 1f;
+    //ALL OF THESE NEED TO BE REASSIGNED FOR FINAL BUILD
+    private readonly float changeRate = 1f; // standard rate of change
+    private readonly float healthDecayRate = 0.3f; 
+    private readonly float staminaChangeRate = 0.5f;
 
     private SpriteRenderer spriteRenderer;
     private SpriteRenderer spriteAccessory;
@@ -58,13 +64,21 @@ public class IdleDuck : MonoBehaviour
 
     void Update()
     {
-        happiness = Mathf.Clamp(happiness - decayRate * Time.deltaTime, 0, maxHappiness);
-        hunger = Mathf.Clamp(hunger - decayRate * Time.deltaTime, 0, maxHunger);
-        stamina = Mathf.Clamp(stamina + (decayRate*2) * Time.deltaTime, 0, maxStamina);
+        happiness = Mathf.Clamp(happiness - changeRate * Time.deltaTime, 0, maxHappiness);
+        hunger = Mathf.Clamp(hunger - changeRate * Time.deltaTime, 0, maxHunger);
+        stamina = Mathf.Clamp(stamina + (staminaChangeRate + happiness/100) * Time.deltaTime, 0, maxStamina);
+        if (hunger <= 0){
+            health = Mathf.Clamp(health - healthDecayRate * Time.deltaTime, 0, maxHealth);
+        }
+        else{
+            health = Mathf.Clamp(health + (changeRate + happiness/100) * Time.deltaTime, 0, maxHealth);
+        }
+        UpdateHealth();
         UpdateHunger();
         UpdateHappiness();
         UpdateStamina();
         UpdateSpeed();
+        UpdateLevel();
         if(exp >= expThresh){
             levelUp();
         }
@@ -74,14 +88,14 @@ public class IdleDuck : MonoBehaviour
     {
         skillPoints += 1;
         currLevel += 1;
-        exp = 0;
+        exp = (exp - expThresh);
         expThresh += 20;
         UpdateLevel();
     }
 
     void UpdateLevel()
     {
-        levelCounter.text = "Lvl. " + currLevel;
+        levelCounter.text = "Lvl. " + currLevel + "\n(" + exp + "/" + expThresh + ")";
     }
 
     void UpdateSpeed()
@@ -104,6 +118,11 @@ public class IdleDuck : MonoBehaviour
         staminaBarText.text = Mathf.Floor(stamina) + " / " + maxStamina;
     }
 
+    void UpdateHealth()
+    {
+        healthBarText.text = Mathf.Floor(health) + " / " + maxHealth;
+    }
+
     void UpdateFish()
     {
         silverFishCounter.text = "Fish: " + silverFish;
@@ -111,12 +130,14 @@ public class IdleDuck : MonoBehaviour
         greenFishCounter.text = "Fish: " + greenFish;
     }
 
+    //funciton for petting
     public void ModifyHappiness(float amount)
     {
         ourAudioSource.PlayOneShot(Quack);
         happiness = Mathf.Clamp(happiness + amount, 0, maxHappiness);
     }
 
+    //three functions for feeding
     public void FeedSilver(float amount)
     {
         if(silverFish > 0){
@@ -150,6 +171,7 @@ public class IdleDuck : MonoBehaviour
         }
     }
 
+    //level up stat increases
     public void IncreaseHunger(){
         ourAudioSource.PlayOneShot(Quack);
         maxHunger += 5f;
@@ -165,6 +187,12 @@ public class IdleDuck : MonoBehaviour
     public void IncreaseStamina(){
         ourAudioSource.PlayOneShot(Quack);
         maxStamina += 5f;
+        skillPoints --;
+    }
+
+    public void IncreaseHealth(){
+        ourAudioSource.PlayOneShot(Quack);
+        maxHealth += 5f;
         skillPoints --;
     }
 
@@ -188,5 +216,10 @@ public class IdleDuck : MonoBehaviour
     public float GetStamina()
     {
         return stamina;
+    }
+
+    public float GetHealth()
+    {
+        return health;
     }
 }

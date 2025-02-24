@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class StatBar : MonoBehaviour
 {
 
-    public enum StatType { Happiness, Hunger, Stamina }
+    public enum StatType { Happiness, Hunger, Stamina, Health}
 
     [SerializeField] IdleDuck duck;
     [SerializeField] StatType stat;
@@ -32,6 +32,10 @@ public class StatBar : MonoBehaviour
 
             case StatType.Stamina:
                 statBar.fillAmount = duck.GetStamina() / IdleDuck.maxStamina;
+                break;
+
+            case StatType.Health:
+                statBar.fillAmount = duck.GetHealth() / IdleDuck.maxHealth;
                 break;
 
             default:
