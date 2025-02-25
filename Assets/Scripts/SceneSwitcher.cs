@@ -18,4 +18,8 @@ public class SceneSwitcher : MonoBehaviour
     {
         SceneManager.LoadScene("Credits");
     }
+    public void LoadStart()
+    {
+        SceneManager.LoadScene("Start Screen");
+    }
 }
