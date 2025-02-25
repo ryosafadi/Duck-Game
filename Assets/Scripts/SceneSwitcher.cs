@@ -14,4 +14,8 @@ public class SceneSwitcher : MonoBehaviour
     {
         SceneManager.LoadScene("Active Mode");
     }
+    public void LoadCredits()
+    {
+        SceneManager.LoadScene("Credits");
+    }
 }
