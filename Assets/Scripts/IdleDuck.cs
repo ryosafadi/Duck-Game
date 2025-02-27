@@ -15,11 +15,11 @@ public class IdleDuck : MonoBehaviour
     public static float stamina = 100f;
     public static float maxStamina = 100f;
     public static float actualSpeed = 1.19f;
-    private static int speedLevel = 1;
+    public static int speedLevel = 1;
 
-    private static int currLevel = 1;
-    private static int expThresh = 100;
-    private static int exp = 0;
+    public static int currLevel = 1;
+    public static int expThresh = 100;
+    public static int exp = 0;
     public static int skillPoints = 0;
 
     public TMP_Text silverFishCounter;
