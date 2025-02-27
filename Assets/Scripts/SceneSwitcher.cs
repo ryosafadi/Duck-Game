@@ -22,4 +22,8 @@ public class SceneSwitcher : MonoBehaviour
     {
         SceneManager.LoadScene("Start Screen");
     }
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
