@@ -47,20 +47,15 @@ public class CustomizationManager : MonoBehaviour
                         string spriteName = PlayerPrefs.GetString("SelectedHatSprite", "");
                         if (!string.IsNullOrEmpty(spriteName))
                         {
-#if UNITY_EDITOR
-                            Sprite loadedSprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Sprites/" + spriteName + ".png");
+                            Sprite loadedSprite = Resources.Load<Sprite>("Sprites/" + spriteName);
                             if (loadedSprite != null)
                             {
                                 selectedAccessory.sprite = loadedSprite;
-                                Debug.Log("Loaded saved sprite: " + spriteName);
                             }
                             else
                             {
-                                Debug.LogError("Sprite could not be loaded from Assets/Sprites: " + spriteName);
+                                Debug.LogError("Sprite could not be loaded from Resources: " + spriteName);
                             }
-#else
-                        Debug.LogError("AssetDatabase can only be used in the Unity Editor.");
-#endif
                         }
                     }
                 }
