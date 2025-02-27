@@ -1237,13 +1237,13 @@ RectTransform:
   m_LocalScale: {x: 0.92046, y: 0.92046, z: 0.92046}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 903595898}
-  - {fileID: 150663167}
   - {fileID: 1494976676}
+  - {fileID: 150663167}
+  - {fileID: 903595898}
   - {fileID: 512397842}
   - {fileID: 1935522061}
-  - {fileID: 1031531844}
   - {fileID: 865703430}
+  - {fileID: 1031531844}
   - {fileID: 1048713354}
   - {fileID: 1897934336}
   - {fileID: 788505494}
@@ -5276,7 +5276,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -14.400024, y: -20.899994}
+  m_AnchoredPosition: {x: -14.400024, y: -20.900024}
   m_SizeDelta: {x: 32.9721, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &521838845
@@ -7881,6 +7881,7 @@ GameObject:
   - component: {fileID: 788505497}
   - component: {fileID: 788505496}
   - component: {fileID: 788505495}
+  - component: {fileID: 788505499}
   m_Layer: 5
   m_Name: Speed Up
   m_TagString: Untagged
@@ -8014,6 +8015,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 788505493}
   m_CullTransparentMesh: 1
+--- !u!225 &788505499
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788505493}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &813635317
 GameObject:
   m_ObjectHideFlags: 0
@@ -8390,6 +8403,7 @@ GameObject:
   - component: {fileID: 865703433}
   - component: {fileID: 865703432}
   - component: {fileID: 865703431}
+  - component: {fileID: 865703435}
   m_Layer: 5
   m_Name: Health Up
   m_TagString: Untagged
@@ -8523,6 +8537,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 865703429}
   m_CullTransparentMesh: 1
+--- !u!225 &865703435
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 865703429}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &866546329
 GameObject:
   m_ObjectHideFlags: 0
@@ -9671,6 +9697,7 @@ GameObject:
   - component: {fileID: 1031531847}
   - component: {fileID: 1031531846}
   - component: {fileID: 1031531845}
+  - component: {fileID: 1031531849}
   m_Layer: 5
   m_Name: Hunger Up
   m_TagString: Untagged
@@ -9804,6 +9831,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1031531843}
   m_CullTransparentMesh: 1
+--- !u!225 &1031531849
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031531843}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1048713353
 GameObject:
   m_ObjectHideFlags: 0
@@ -9817,6 +9856,7 @@ GameObject:
   - component: {fileID: 1048713357}
   - component: {fileID: 1048713356}
   - component: {fileID: 1048713355}
+  - component: {fileID: 1048713359}
   m_Layer: 5
   m_Name: Happiness Up
   m_TagString: Untagged
@@ -9950,6 +9990,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1048713353}
   m_CullTransparentMesh: 1
+--- !u!225 &1048713359
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1048713353}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1089019662
 GameObject:
   m_ObjectHideFlags: 0
@@ -17267,6 +17319,7 @@ GameObject:
   - component: {fileID: 1897934339}
   - component: {fileID: 1897934338}
   - component: {fileID: 1897934337}
+  - component: {fileID: 1897934341}
   m_Layer: 5
   m_Name: Stamina Up
   m_TagString: Untagged
@@ -17400,6 +17453,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1897934335}
   m_CullTransparentMesh: 1
+--- !u!225 &1897934341
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1897934335}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1905926119
 GameObject:
   m_ObjectHideFlags: 0
