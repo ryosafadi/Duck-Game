@@ -641,6 +641,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  pondObject: {fileID: 500743933}
   breathingSpeed: 1
   breathingAmount: 0.1
   idleBounceHeight: 0.1
