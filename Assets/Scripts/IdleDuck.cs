@@ -45,7 +45,7 @@ public class IdleDuck : MonoBehaviour
     //ALL OF THESE NEED TO BE REASSIGNED FOR FINAL BUILD
     private readonly float changeRate = 1f; // standard rate of change
     private readonly float healthDecayRate = 0.3f; 
-    private readonly float staminaChangeRate = 0.5f;
+    private readonly float staminaChangeRate = 0.7f;
 
     private SpriteRenderer spriteRenderer;
     private SpriteRenderer spriteAccessory;
@@ -143,7 +143,7 @@ public class IdleDuck : MonoBehaviour
         if(silverFish > 0){
             ourAudioSource.PlayOneShot(Munch);
             hunger = Mathf.Clamp(hunger + amount, 0, maxHunger);
-            exp += 100; //for the sake of playtesting, the exp is lower than it should be
+            exp += 23;
             silverFish--;
             UpdateFish();
         }
@@ -154,7 +154,7 @@ public class IdleDuck : MonoBehaviour
         if(redFish > 0){
             ourAudioSource.PlayOneShot(Munch);
             hunger = Mathf.Clamp(hunger + amount, 0, maxHunger);
-            exp += 23;
+            exp += 28;
             redFish--;
             UpdateFish();
         }
@@ -165,7 +165,7 @@ public class IdleDuck : MonoBehaviour
         if(greenFish > 0){
             ourAudioSource.PlayOneShot(Munch);
             hunger = Mathf.Clamp(hunger + amount, 0, maxHunger);
-            exp += 31;
+            exp += 19;
             greenFish--;
             UpdateFish();
         }

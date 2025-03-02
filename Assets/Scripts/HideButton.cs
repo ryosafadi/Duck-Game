@@ -5,22 +5,27 @@ using UnityEngine.UI;
 
 public class HideButton : MonoBehaviour
 {
-    Button buttonToHide;
+    CanvasGroup canvasGroup;
+
     // Start is called before the first frame update
     void Start()
     {
-        buttonToHide = GetComponent<Button>();
+        canvasGroup = gameObject.GetComponent<CanvasGroup>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(IdleDuck.skillPoints);
         if(IdleDuck.skillPoints <= 0){
-            buttonToHide.gameObject.SetActive(false);
+            canvasGroup.alpha = 0;
+            canvasGroup.interactable = false;
+            canvasGroup.blocksRaycasts = false;
         }
+
         if(IdleDuck.skillPoints > 0){
-            buttonToHide.gameObject.SetActive(true);
+            canvasGroup.alpha = 1;
+            canvasGroup.interactable = true;
+            canvasGroup.blocksRaycasts = true;
         }
     }
 }
