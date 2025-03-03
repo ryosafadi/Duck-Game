@@ -1,4 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using System;
 
 public class TrashDispose : MonoBehaviour
 {
@@ -23,6 +27,7 @@ public class TrashDispose : MonoBehaviour
 
     private AudioSource audioSource;
 
+    private PlayerMovement playerController;
     void Start()
     {
         if(player == null)
@@ -30,6 +35,7 @@ public class TrashDispose : MonoBehaviour
             player = GameObject.FindWithTag("Player");
         }
         playerCC = player.GetComponent<CharacterController>();
+        playerController = player.GetComponent<PlayerMovement>();
 
         audioSource = GetComponent<AudioSource>();
     }
@@ -67,10 +73,22 @@ public class TrashDispose : MonoBehaviour
                 {
                     audioSource.PlayOneShot(hitSound);
                 }
-
+                if (playerController != null)
+                {
+                    UnityEngine.Debug.Log("got there");
+                    playerController.isStunned = true;
+                    // Option 1: Use a coroutine to remove the stun after knockbackDelay seconds
+                    StartCoroutine(RemoveStunAfterDelay(knockbackDelay * 5/4));
+                }
                 // Reset the attack cooldown
                 attackCooldownTimer = knockbackDelay;
             }
         }
+    }
+    private IEnumerator RemoveStunAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        if (playerController != null)
+            playerController.isStunned = false;
     }
 }

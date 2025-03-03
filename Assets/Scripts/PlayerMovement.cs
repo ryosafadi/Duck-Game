@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private float dashDuration = 0.75f;
 
     private bool isDashing = false;
-
+    public bool isStunned = false;
     [SerializeField] private AudioClip Dash;
     private AudioSource moveAudioSource;
 
@@ -29,32 +29,40 @@ public class PlayerMovement : MonoBehaviour
     {
         // https://docs.unity3d.com/6000.0/Documentation/ScriptReference/Camera.ScreenToWorldPoint.html
         // Get the mouse position in world space
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePosition.z = 0f;
-
-        // Calculate the direction to the mouse
-        Vector3 direction = (mousePosition - transform.position).normalized;
-
-        if (Input.GetMouseButtonDown(0) && !isDashing && IdleDuck.stamina > 0)
+        if (!isStunned)
         {
-            isDashing = true;
-            moveAudioSource.PlayOneShot(Dash);
-            StartCoroutine(DashCoroutine());
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePosition.z = 0f;
+
+            // Calculate the direction to the mouse
+            Vector3 direction = (mousePosition - transform.position).normalized;
+
+            if (Input.GetMouseButtonDown(0) && !isDashing && IdleDuck.stamina > 0)
+            {
+                isDashing = true;
+                moveAudioSource.PlayOneShot(Dash);
+                StartCoroutine(DashCoroutine());
+            }
+
+            // Move the character towards the mouse position
+            if (Vector3.Distance(transform.position, mousePosition) > stoppingDistance)
+            {
+                if (isDashing)
+                {
+                    characterController.Move(direction * IdleDuck.actualSpeed * dashSpeed * Time.deltaTime);
+                    IdleDuck.stamina -= staminaDrainRate * dashSpeed * Time.deltaTime;
+                }
+                else
+                {
+                    characterController.Move(direction * IdleDuck.actualSpeed * Time.deltaTime);
+                    IdleDuck.stamina -= staminaDrainRate * Time.deltaTime;
+                }
+            }
+
         }
-
-        // Move the character towards the mouse position
-        if (Vector3.Distance(transform.position, mousePosition) > stoppingDistance)
+        else
         {
-            if (isDashing)
-            {
-                characterController.Move(direction * IdleDuck.actualSpeed * dashSpeed * Time.deltaTime);
-                IdleDuck.stamina -= staminaDrainRate * dashSpeed * Time.deltaTime;
-            }
-            else
-            {
-                characterController.Move(direction * IdleDuck.actualSpeed * Time.deltaTime);
-                IdleDuck.stamina -= staminaDrainRate * Time.deltaTime;
-            }
+            UnityEngine.Debug.Log("Not Moving");
         }
 
         if (IdleDuck.stamina <= 0f)
