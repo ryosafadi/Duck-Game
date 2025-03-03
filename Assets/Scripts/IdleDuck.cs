@@ -15,11 +15,11 @@ public class IdleDuck : MonoBehaviour
     public static float stamina = 100f;
     public static float maxStamina = 100f;
     public static float actualSpeed = 1.19f;
-    public static int speedLevel = 1;
+    private static float speedLevel = 1;
 
-    public static int currLevel = 1;
-    public static int expThresh = 100;
-    public static int exp = 0;
+    private static int currLevel = 1;
+    private static int expThresh = 100;
+    private static int exp = 0;
     public static int skillPoints = 0;
 
     public TMP_Text silverFishCounter;
@@ -57,9 +57,8 @@ public class IdleDuck : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.color = CustomizationManager.Instance.GetColor();
 
-        UpdateFish();
-        UpdateLevel();
-        UpdateSpeed();
+        UpdateAll();
+
     }
 
     void Update()
@@ -73,18 +72,45 @@ public class IdleDuck : MonoBehaviour
         else{
             health = Mathf.Clamp(health + (changeRate + happiness/100) * Time.deltaTime, 0, maxHealth);
         }
+        UpdateAll();
+        if(exp >= expThresh){
+            LevelUp();
+        }
+        if(health <= 0){
+            Revive();
+        }
+    }
+
+    private void UpdateAll(){
         UpdateHealth();
         UpdateHunger();
         UpdateHappiness();
         UpdateStamina();
         UpdateSpeed();
         UpdateLevel();
-        if(exp >= expThresh){
-            levelUp();
-        }
+        UpdateFish();
+        UpdateLevel();
+        UpdateSpeed();
     }
 
-    private void levelUp()
+    private void Revive(){
+        currLevel = 1;
+        exp = 0;
+        expThresh = 100;
+        maxHealth = Mathf.Ceil(maxHealth - (maxHealth - 100) / 2);
+        maxHappiness = Mathf.Ceil(maxHappiness - (maxHappiness - 100) / 2);
+        maxHunger = Mathf.Ceil(maxHunger - (maxHunger - 100) / 2);
+        maxStamina = Mathf.Ceil(maxStamina - (maxStamina - 100) / 2);
+        actualSpeed = actualSpeed - (0.2f * (speedLevel / 2f));
+        speedLevel = Mathf.Ceil(speedLevel / 2);
+        UpdateAll();
+        health = maxHealth;
+        happiness = maxHappiness;
+        hunger = maxHunger;
+        stamina = maxStamina;
+    }
+
+    private void LevelUp()
     {
         skillPoints += 1;
         currLevel += 1;
