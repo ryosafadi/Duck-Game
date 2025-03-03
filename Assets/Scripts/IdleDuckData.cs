@@ -12,4 +12,7 @@ public class IdleDuckData
     public int currLevel = 1;
     public int exp = 0;
     public int skillPoints = 0;
+    public int silverFish = 0;
+    public int redFish = 0;
+    public int greenFish = 0;
 }

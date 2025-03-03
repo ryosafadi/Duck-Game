@@ -12,8 +12,6 @@ public class SaveManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject); // Keep this GameObject across scenes
-
-            SaveSystem.LoadGame();
         }
         else
         {
