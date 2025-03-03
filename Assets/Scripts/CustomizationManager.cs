@@ -8,7 +8,6 @@ public class CustomizationManager : MonoBehaviour
 {
     public static CustomizationManager Instance;
 
-    public Color selectedColor;
     private SpriteRenderer selectedAccessory;
 
     private void Awake()
@@ -78,12 +77,26 @@ public class CustomizationManager : MonoBehaviour
 
     public void SetColor(Color color)
     {
-        selectedColor = color;
+        PlayerPrefs.SetFloat("Color_R", color.r);
+        PlayerPrefs.SetFloat("Color_G", color.g);
+        PlayerPrefs.SetFloat("Color_B", color.b);
+        PlayerPrefs.SetFloat("Color_A", color.a);
+        PlayerPrefs.Save();
     }
 
     public Color GetColor()
     {
-        return selectedColor;
+        if (PlayerPrefs.HasKey("Color_R"))
+        {
+            float r = PlayerPrefs.GetFloat("Color_R");
+            float g = PlayerPrefs.GetFloat("Color_G");
+            float b = PlayerPrefs.GetFloat("Color_B");
+            float a = PlayerPrefs.GetFloat("Color_A");
+
+            Color savedColor = new Color(r, g, b, a);
+            return savedColor;
+        }
+            return new Color(255f / 255f, 255f / 255f, 255f / 255f);
     }
 
     public void SetAccessory(Sprite sprite)

@@ -31,12 +31,5 @@ public class ColorSelect : MonoBehaviour
     {
         CustomizationManager.Instance.SetColor(color);
         spriteRenderer.color = color;
-
-        // Save color to PlayerPrefs
-        PlayerPrefs.SetFloat("Color_R", color.r);
-        PlayerPrefs.SetFloat("Color_G", color.g);
-        PlayerPrefs.SetFloat("Color_B", color.b);
-        PlayerPrefs.SetFloat("Color_A", color.a);
-        PlayerPrefs.Save();
     }
 }
