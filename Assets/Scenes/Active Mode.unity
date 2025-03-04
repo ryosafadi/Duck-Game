@@ -7675,7 +7675,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ff2887612b217d429cb4771328beccc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stoppingDistance: 0.15
+  stoppingDistance: 0.2
+  isStunned: 0
   Dash: {fileID: 8300000, guid: 9792a91c6c91cff4a88b70c5dcc31e25, type: 3}
 --- !u!143 &1346919891
 CharacterController:
