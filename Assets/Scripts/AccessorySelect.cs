@@ -10,6 +10,7 @@ public class AccessorySelect : MonoBehaviour
     public Sprite bow;
     public Sprite glasses;
     public Sprite cone;
+    public Sprite none;
 
     public void PlayerHat()
     {
@@ -33,5 +34,11 @@ public class AccessorySelect : MonoBehaviour
     {
         spriteRenderer.sprite = cone;
         CustomizationManager.Instance.SetAccessory(cone);
+    }
+
+    public void PlayerNone()
+    {
+        spriteRenderer.sprite = none;
+        CustomizationManager.Instance.SetAccessory(none);
     }
 }
