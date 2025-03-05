@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections.Generic;
 
 public class PlayerMoveToClick : MonoBehaviour
 {
@@ -10,7 +9,7 @@ public class PlayerMoveToClick : MonoBehaviour
     private Vector3 originalScale;
 
     [Header("Boundary Settings")]
-    public GameObject pondObject; 
+    public GameObject pondObject;
     private PolygonCollider2D pondCollider;
 
     [Header("Idle Animation")]
@@ -25,12 +24,16 @@ public class PlayerMoveToClick : MonoBehaviour
     public float walkSquashAmount = 0.2f;
     private Vector3 currentPosition;
 
+    [Header("Random Movement Settings")]
+    public float randomMoveInterval = 3f;
+    private float randomMoveTimer;
+
     void Start()
     {
         originalScale = transform.localScale;
         targetPosition = transform.position;
         currentPosition = transform.position;
-        
+
         if (pondObject != null)
         {
             pondCollider = pondObject.GetComponent<PolygonCollider2D>();
@@ -39,37 +42,24 @@ public class PlayerMoveToClick : MonoBehaviour
                 pondCollider = pondObject.AddComponent<PolygonCollider2D>();
             }
         }
+
+        randomMoveTimer = randomMoveInterval;
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(1))
+        randomMoveTimer -= Time.deltaTime;
+
+        if (randomMoveTimer <= 0f && !isMoving)
         {
-            Vector2 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            
-            if (pondCollider != null)
-            {
-                if (pondCollider.OverlapPoint(clickPosition))
-                {
-                    targetPosition = clickPosition;
-                }
-                else
-                {
-                    targetPosition = FindClosestPointOnPondEdge(clickPosition);
-                }
-            }
-            else
-            {
-                targetPosition = clickPosition;
-            }
-            
-            isMoving = true;
+            SetRandomTargetPosition();
+            randomMoveTimer = randomMoveInterval;
         }
 
         if (isMoving)
         {
             currentPosition = Vector2.MoveTowards(currentPosition, targetPosition, speed * Time.deltaTime);
-            
+
             // Walking animation
             float bounceOffset = Mathf.Sin(Time.time * walkBounceSpeed) * walkBounceHeight;
             transform.position = new Vector3(currentPosition.x, currentPosition.y + bounceOffset, currentPosition.z);
@@ -81,6 +71,7 @@ public class PlayerMoveToClick : MonoBehaviour
                 originalScale.y * squashStretch,
                 originalScale.z
             );
+
             if (Vector2.Distance(currentPosition, targetPosition) < 0.1f)
             {
                 isMoving = false;
@@ -90,6 +81,32 @@ public class PlayerMoveToClick : MonoBehaviour
         {
             // Idle animations
             ApplyIdleAnimations();
+        }
+
+        // Handle click movement (right-click to move to a clicked position)
+        if (Input.GetMouseButtonDown(1))
+        {
+            Vector2 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+            if (pondCollider != null)
+            {
+                if (pondCollider.OverlapPoint(clickPosition))
+                {
+                    targetPosition = clickPosition;
+                }
+                else
+                {
+                    Debug.Log("Before: "+clickPosition);
+                    targetPosition = FindClosestPointOnPondEdge(clickPosition);
+                    Debug.Log("After: "+targetPosition);
+                }
+            }
+            else
+            {
+                targetPosition = clickPosition;
+            }
+
+            isMoving = true;
         }
     }
 
@@ -108,22 +125,66 @@ public class PlayerMoveToClick : MonoBehaviour
         transform.position = new Vector3(currentPosition.x, currentPosition.y + idleBounce, currentPosition.z);
     }
 
+    void SetRandomTargetPosition()
+    {
+        // Pick a random point within the bounds of the pond collider
+        Vector3 randomPoint = (Vector3)pondCollider.bounds.center +
+    new Vector3(Random.Range(-pondCollider.bounds.size.x / 2, pondCollider.bounds.size.x / 2),
+                Random.Range(-pondCollider.bounds.size.y / 2, pondCollider.bounds.size.y / 2), 0f);
+
+
+        // Check if the random point is within the pond collider; if not, pick a point on the edge
+        if (pondCollider.OverlapPoint(randomPoint))
+        {
+            targetPosition = randomPoint;
+        }
+        else
+        {
+            targetPosition = FindClosestPointOnPondEdge(randomPoint);
+        }
+
+        isMoving = true;
+    }
+
     Vector2 FindClosestPointOnPondEdge(Vector2 outsidePoint)
     {
-        Vector2 pondCenter = pondCollider.bounds.center;
-        
-        Vector2 direction = (outsidePoint - pondCenter).normalized;
-        
-        RaycastHit2D hit = Physics2D.Raycast(pondCenter, direction, 100f);
-        
-        if (hit.collider != null && hit.collider == pondCollider)
+        Vector2[] points = pondCollider.points;
+        Vector2 closestPoint = points[0];
+        float closestDistance = Vector2.Distance(outsidePoint, points[0]);
+
+        for (int i = 0; i < points.Length; i++)
         {
-            // Hit the edge of the pond
-            return hit.point;
+            Vector2 p1 = pondCollider.transform.TransformPoint(points[i]);
+            Vector2 p2 = pondCollider.transform.TransformPoint(points[(i + 1) % points.Length]);
+            
+            Vector2 closestOnSegment = GetClosestPointOnLineSegment(p1, p2, outsidePoint);
+            
+            float distance = Vector2.Distance(outsidePoint, closestOnSegment);
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                closestPoint = closestOnSegment;
+            }
         }
-        
-        return pondCollider.bounds.ClosestPoint(outsidePoint);
+        return closestPoint;
     }
+
+    Vector2 GetClosestPointOnLineSegment(Vector2 p1, Vector2 p2, Vector2 outsidePoint)
+    {
+        Vector2 segmentDirection = p2 - p1;
+        Vector2 p1ToPoint = outsidePoint - p1;
+
+        float segmentLengthSquared = segmentDirection.sqrMagnitude;
+        if (segmentLengthSquared == 0f)
+        {
+            return p1;
+        }
+
+        float t = Mathf.Clamp(Vector2.Dot(p1ToPoint, segmentDirection) / segmentLengthSquared, 0f, 1f);
+
+        return p1 + t * segmentDirection;
+    }
+
     void OnDrawGizmos()
     {
         if (pondObject != null)
@@ -132,13 +193,13 @@ public class PlayerMoveToClick : MonoBehaviour
             if (editorPondCollider != null)
             {
                 Gizmos.color = Color.cyan;
-                
+
                 Vector2[] points = editorPondCollider.points;
                 for (int i = 0; i < points.Length; i++)
                 {
                     Vector2 worldPoint1 = pondObject.transform.TransformPoint(points[i]);
                     Vector2 worldPoint2 = pondObject.transform.TransformPoint(points[(i + 1) % points.Length]);
-                    
+
                     Gizmos.DrawLine(worldPoint1, worldPoint2);
                 }
             }
