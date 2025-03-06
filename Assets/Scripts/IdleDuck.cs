@@ -36,6 +36,8 @@ public class IdleDuck : MonoBehaviour
     public static int redFish;
     public static int greenFish;
 
+    public GameObject sickCanvas;
+
     private AudioSource ourAudioSource;
     [SerializeField] private AudioClip Quack;
     [SerializeField] private AudioClip Munch;
@@ -77,8 +79,22 @@ public class IdleDuck : MonoBehaviour
             LevelUp();
         }
         if(health <= 0){
-            Revive();
+            //Revive();
+            ShowSickScreen();
         }
+    }
+
+    void ShowSickScreen()
+    {
+        sickCanvas.SetActive(true);  // Show the Canvas
+        Time.timeScale = 0f; // Pause the game
+    }
+
+    public void Heal()
+    {
+        sickCanvas.SetActive(false); // Hide the Canvas
+        Time.timeScale = 1f; // Resume the game
+        Revive();
     }
 
     private void UpdateAll(){
