@@ -11,7 +11,7 @@ public class IdleDuckData
     public float maxHunger = 100f;
     public float stamina = 100f;
     public float maxStamina = 100f;
-    public float actualSpeed = 1.19f;
+    public float actualSpeed = 1.5f;
     public float speedLevel = 1;
     public int currLevel = 1;
     public int expThresh = 100;

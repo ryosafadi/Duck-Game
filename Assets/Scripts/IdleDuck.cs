@@ -14,7 +14,7 @@ public class IdleDuck : MonoBehaviour
     public static float maxHunger = 100f;
     public static float stamina = 100f;
     public static float maxStamina = 100f;
-    public static float actualSpeed = 1.19f;
+    public static float actualSpeed = 1.5f;
     public static float speedLevel = 1;
 
     public static int currLevel = 1;
