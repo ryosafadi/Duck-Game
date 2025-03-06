@@ -200,25 +200,25 @@ public class IdleDuck : MonoBehaviour
     //level up stat increases
     public void IncreaseHunger(){
         ourAudioSource.PlayOneShot(Quack);
-        maxHunger += 5f;
+        maxHunger += 10f;
         skillPoints --;
     }
 
     public void IncreaseHappiness(){
         ourAudioSource.PlayOneShot(Quack);
-        maxHappiness += 5f;
+        maxHappiness += 10f;
         skillPoints --;
     }
 
     public void IncreaseStamina(){
         ourAudioSource.PlayOneShot(Quack);
-        maxStamina += 5f;
+        maxStamina += 10f;
         skillPoints --;
     }
 
     public void IncreaseHealth(){
         ourAudioSource.PlayOneShot(Quack);
-        maxHealth += 5f;
+        maxHealth += 10f;
         skillPoints --;
     }
 
