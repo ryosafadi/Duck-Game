@@ -14,7 +14,7 @@ public class IdleDuck : MonoBehaviour
     public static float maxHunger = 100f;
     public static float stamina = 100f;
     public static float maxStamina = 100f;
-    public static float actualSpeed = 1.19f;
+    public static float actualSpeed = 1.5f;
     public static float speedLevel = 1;
 
     public static int currLevel = 1;
@@ -200,25 +200,25 @@ public class IdleDuck : MonoBehaviour
     //level up stat increases
     public void IncreaseHunger(){
         ourAudioSource.PlayOneShot(Quack);
-        maxHunger += 5f;
+        maxHunger += 10f;
         skillPoints --;
     }
 
     public void IncreaseHappiness(){
         ourAudioSource.PlayOneShot(Quack);
-        maxHappiness += 5f;
+        maxHappiness += 10f;
         skillPoints --;
     }
 
     public void IncreaseStamina(){
         ourAudioSource.PlayOneShot(Quack);
-        maxStamina += 5f;
+        maxStamina += 10f;
         skillPoints --;
     }
 
     public void IncreaseHealth(){
         ourAudioSource.PlayOneShot(Quack);
-        maxHealth += 5f;
+        maxHealth += 10f;
         skillPoints --;
     }
 

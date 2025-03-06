@@ -47,7 +47,7 @@ public static class SaveSystem
         IdleDuck.maxHunger = 100f;
         IdleDuck.stamina = 100f;
         IdleDuck.maxStamina = 100f;
-        IdleDuck.actualSpeed = 1.19f;
+        IdleDuck.actualSpeed = 1.5f;
         IdleDuck.speedLevel = 1;
         IdleDuck.currLevel = 1;
         IdleDuck.expThresh = 100;

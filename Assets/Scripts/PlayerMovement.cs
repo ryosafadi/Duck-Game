@@ -10,8 +10,8 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController characterController;
 
    // public float maxStamina; // placeholder
-    private float staminaDrainRate = 3.5f;
-    private float dashSpeed = 2.5f;
+    private float staminaDrainRate = 2.5f;
+    private float dashSpeed = 3.5f;
     private float dashDuration = 0.75f;
 
     private bool isDashing = false;
