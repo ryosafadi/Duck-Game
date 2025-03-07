@@ -1,3 +1,7 @@
+using System;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class PlayerMoveToClick : MonoBehaviour
@@ -27,6 +31,9 @@ public class PlayerMoveToClick : MonoBehaviour
     [Header("Random Movement Settings")]
     public float randomMoveInterval = 3f;
     private float randomMoveTimer;
+
+    [Header("AccessoryCosemic")]
+    public GameObject hat;
 
     void Start()
     {
@@ -58,6 +65,7 @@ public class PlayerMoveToClick : MonoBehaviour
 
         if (isMoving)
         {
+
             currentPosition = Vector2.MoveTowards(currentPosition, targetPosition, speed * Time.deltaTime);
 
             // Walking animation
@@ -96,9 +104,9 @@ public class PlayerMoveToClick : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("Before: "+clickPosition);
+                    UnityEngine.Debug.Log("Before: "+clickPosition);
                     targetPosition = FindClosestPointOnPondEdge(clickPosition);
-                    Debug.Log("After: "+targetPosition);
+                    UnityEngine.Debug.Log("After: "+targetPosition);
                 }
             }
             else
@@ -107,6 +115,23 @@ public class PlayerMoveToClick : MonoBehaviour
             }
 
             isMoving = true;
+            if (currentPosition.x < targetPosition.x)
+            {
+                UnityEngine.Debug.Log("Less than");
+                GetComponent<SpriteRenderer>().flipX = true;
+                if (hat) {
+                    hat.GetComponent<SpriteRenderer>().flipX = true;
+                }
+                
+            }
+            else
+            {
+                GetComponent<SpriteRenderer>().flipX = false;
+                if (hat)
+                {
+                    hat.GetComponent<SpriteRenderer>().flipX = false;
+                }
+            }
         }
     }
 
@@ -129,8 +154,8 @@ public class PlayerMoveToClick : MonoBehaviour
     {
         // Pick a random point within the bounds of the pond collider
         Vector3 randomPoint = (Vector3)pondCollider.bounds.center +
-    new Vector3(Random.Range(-pondCollider.bounds.size.x / 2, pondCollider.bounds.size.x / 2),
-                Random.Range(-pondCollider.bounds.size.y / 2, pondCollider.bounds.size.y / 2), 0f);
+    new Vector3(UnityEngine.Random.Range(-pondCollider.bounds.size.x / 2, pondCollider.bounds.size.x / 2),
+                UnityEngine.Random.Range(-pondCollider.bounds.size.y / 2, pondCollider.bounds.size.y / 2), 0f);
 
 
         // Check if the random point is within the pond collider; if not, pick a point on the edge
@@ -144,6 +169,27 @@ public class PlayerMoveToClick : MonoBehaviour
         }
 
         isMoving = true;
+        if (currentPosition.x < targetPosition.x)
+        {
+            UnityEngine.Debug.Log("Less than");
+            Vector3 scale = transform.localScale;
+            UnityEngine.Debug.Log(scale);
+            GetComponent<SpriteRenderer>().flipX = true;
+            if (hat)
+            {
+                hat.GetComponent<SpriteRenderer>().flipX = true;
+            }
+            UnityEngine.Debug.Log(scale);
+            transform.localScale = scale;
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().flipX = false;
+            if (hat)
+            {
+                hat.GetComponent<SpriteRenderer>().flipX = false;
+            }
+        }
     }
 
     Vector2 FindClosestPointOnPondEdge(Vector2 outsidePoint)
