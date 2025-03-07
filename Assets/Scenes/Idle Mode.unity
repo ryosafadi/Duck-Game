@@ -650,6 +650,7 @@ MonoBehaviour:
   walkBounceSpeed: 3
   walkSquashAmount: 0.1
   randomMoveInterval: 4.5
+  hat: {fileID: 1190863523}
 --- !u!1 &29703664
 GameObject:
   m_ObjectHideFlags: 0
