@@ -641,6 +641,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  isMoving: 0
   pondObject: {fileID: 984722718}
   breathingSpeed: 1
   breathingAmount: 0.1
@@ -4200,6 +4201,7 @@ GameObject:
   m_Component:
   - component: {fileID: 394502606}
   - component: {fileID: 394502607}
+  - component: {fileID: 394502608}
   m_Layer: 0
   m_Name: lilypad (4)
   m_TagString: Untagged
@@ -4274,6 +4276,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &394502608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394502605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d61e2a9de9442e459831cc78d13aa45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationRadius: 2
+  swayAmount: 0.2
+  swaySpeed: 3
+  returnSpeed: 1
+  useRotationAnimation: 1
+  useScaleAnimation: 1
+  useColorShift: 0
+  baseColor: {r: 1, g: 1, b: 1, a: 1}
+  activeColor: {r: 0, g: 0, b: 0, a: 0}
+  playerScript: {fileID: 0}
 --- !u!1 &394665268
 GameObject:
   m_ObjectHideFlags: 0
@@ -7088,6 +7112,7 @@ GameObject:
   m_Component:
   - component: {fileID: 618960109}
   - component: {fileID: 618960110}
+  - component: {fileID: 618960111}
   m_Layer: 0
   m_Name: cattail (1)
   m_TagString: Untagged
@@ -7162,6 +7187,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &618960111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 618960108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d61e2a9de9442e459831cc78d13aa45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationRadius: 1
+  swayAmount: 3
+  swaySpeed: 1
+  returnSpeed: 1
+  useRotationAnimation: 1
+  useScaleAnimation: 1
+  useColorShift: 0
+  baseColor: {r: 1, g: 1, b: 1, a: 1}
+  activeColor: {r: 0, g: 0, b: 0, a: 0}
+  playerScript: {fileID: 0}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -7766,6 +7813,7 @@ GameObject:
   m_Component:
   - component: {fileID: 670213335}
   - component: {fileID: 670213336}
+  - component: {fileID: 670213337}
   m_Layer: 0
   m_Name: lilyFlower
   m_TagString: Untagged
@@ -7840,6 +7888,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &670213337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670213334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d61e2a9de9442e459831cc78d13aa45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationRadius: 2
+  swayAmount: 0.2
+  swaySpeed: 3
+  returnSpeed: 1
+  useRotationAnimation: 1
+  useScaleAnimation: 1
+  useColorShift: 0
+  baseColor: {r: 1, g: 1, b: 1, a: 1}
+  activeColor: {r: 0, g: 0, b: 0, a: 0}
+  playerScript: {fileID: 0}
 --- !u!1 &688409690
 GameObject:
   m_ObjectHideFlags: 0
@@ -8008,6 +8078,7 @@ GameObject:
   m_Component:
   - component: {fileID: 707280841}
   - component: {fileID: 707280842}
+  - component: {fileID: 707280843}
   m_Layer: 0
   m_Name: pondFlower (1)
   m_TagString: Untagged
@@ -8082,6 +8153,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &707280843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707280840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d61e2a9de9442e459831cc78d13aa45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationRadius: 2
+  swayAmount: 0.2
+  swaySpeed: 3
+  returnSpeed: 1
+  useRotationAnimation: 1
+  useScaleAnimation: 1
+  useColorShift: 0
+  baseColor: {r: 1, g: 1, b: 1, a: 1}
+  activeColor: {r: 0, g: 0, b: 0, a: 0}
+  playerScript: {fileID: 0}
 --- !u!1 &727756714
 GameObject:
   m_ObjectHideFlags: 0
@@ -8596,6 +8689,7 @@ GameObject:
   m_Component:
   - component: {fileID: 767551420}
   - component: {fileID: 767551421}
+  - component: {fileID: 767551422}
   m_Layer: 0
   m_Name: cattail
   m_TagString: Untagged
@@ -8670,6 +8764,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &767551422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 767551419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d61e2a9de9442e459831cc78d13aa45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationRadius: 2
+  swayAmount: 0.3
+  swaySpeed: 3
+  returnSpeed: 1
+  useRotationAnimation: 1
+  useScaleAnimation: 1
+  useColorShift: 1
+  baseColor: {r: 1, g: 1, b: 1, a: 1}
+  activeColor: {r: 0, g: 0, b: 0, a: 0}
+  playerScript: {fileID: 0}
 --- !u!1 &788505493
 GameObject:
   m_ObjectHideFlags: 0
@@ -10034,6 +10150,7 @@ GameObject:
   m_Component:
   - component: {fileID: 920999209}
   - component: {fileID: 920999210}
+  - component: {fileID: 920999211}
   m_Layer: 0
   m_Name: lilypad (1)
   m_TagString: Untagged
@@ -10108,6 +10225,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &920999211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920999208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d61e2a9de9442e459831cc78d13aa45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationRadius: 2
+  swayAmount: 0.2
+  swaySpeed: 3
+  returnSpeed: 1
+  useRotationAnimation: 1
+  useScaleAnimation: 1
+  useColorShift: 0
+  baseColor: {r: 1, g: 1, b: 1, a: 1}
+  activeColor: {r: 0, g: 0, b: 0, a: 0}
+  playerScript: {fileID: 0}
 --- !u!1 &933743310
 GameObject:
   m_ObjectHideFlags: 0
@@ -12634,6 +12773,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1167108954}
   - component: {fileID: 1167108955}
+  - component: {fileID: 1167108956}
   m_Layer: 0
   m_Name: leaves
   m_TagString: Untagged
@@ -12708,6 +12848,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1167108956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167108953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d61e2a9de9442e459831cc78d13aa45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationRadius: 2
+  swayAmount: 0.2
+  swaySpeed: 3
+  returnSpeed: 1
+  useRotationAnimation: 1
+  useScaleAnimation: 1
+  useColorShift: 0
+  baseColor: {r: 1, g: 1, b: 1, a: 1}
+  activeColor: {r: 0, g: 0, b: 0, a: 0}
+  playerScript: {fileID: 0}
 --- !u!1 &1171457267
 GameObject:
   m_ObjectHideFlags: 0
@@ -12718,6 +12880,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1171457268}
   - component: {fileID: 1171457269}
+  - component: {fileID: 1171457270}
   m_Layer: 0
   m_Name: pondFlower (2)
   m_TagString: Untagged
@@ -12792,6 +12955,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1171457270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171457267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d61e2a9de9442e459831cc78d13aa45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationRadius: 2
+  swayAmount: 0.2
+  swaySpeed: 3
+  returnSpeed: 1
+  useRotationAnimation: 1
+  useScaleAnimation: 1
+  useColorShift: 0
+  baseColor: {r: 1, g: 1, b: 1, a: 1}
+  activeColor: {r: 0, g: 0, b: 0, a: 0}
+  playerScript: {fileID: 0}
 --- !u!1 &1173292946
 GameObject:
   m_ObjectHideFlags: 0
@@ -12802,6 +12987,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1173292947}
   - component: {fileID: 1173292948}
+  - component: {fileID: 1173292949}
   m_Layer: 0
   m_Name: lilypad (2)
   m_TagString: Untagged
@@ -12876,6 +13062,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1173292949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173292946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d61e2a9de9442e459831cc78d13aa45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationRadius: 2
+  swayAmount: 0.2
+  swaySpeed: 3
+  returnSpeed: 1
+  useRotationAnimation: 1
+  useScaleAnimation: 1
+  useColorShift: 0
+  baseColor: {r: 1, g: 1, b: 1, a: 1}
+  activeColor: {r: 0, g: 0, b: 0, a: 0}
+  playerScript: {fileID: 0}
 --- !u!1 &1179459060
 GameObject:
   m_ObjectHideFlags: 0
@@ -14289,6 +14497,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1280832972}
   - component: {fileID: 1280832973}
+  - component: {fileID: 1280832974}
   m_Layer: 0
   m_Name: pondFlower
   m_TagString: Untagged
@@ -14363,6 +14572,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1280832974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1280832971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d61e2a9de9442e459831cc78d13aa45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationRadius: 2
+  swayAmount: 0.2
+  swaySpeed: 3
+  returnSpeed: 1
+  useRotationAnimation: 1
+  useScaleAnimation: 1
+  useColorShift: 0
+  baseColor: {r: 1, g: 1, b: 1, a: 1}
+  activeColor: {r: 0, g: 0, b: 0, a: 0}
+  playerScript: {fileID: 0}
 --- !u!1 &1296330433
 GameObject:
   m_ObjectHideFlags: 0
@@ -16376,6 +16607,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1574496037}
   - component: {fileID: 1574496038}
+  - component: {fileID: 1574496039}
   m_Layer: 0
   m_Name: lilypad (3)
   m_TagString: Untagged
@@ -16450,6 +16682,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1574496039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1574496036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d61e2a9de9442e459831cc78d13aa45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationRadius: 2
+  swayAmount: 0.2
+  swaySpeed: 3
+  returnSpeed: 1
+  useRotationAnimation: 1
+  useScaleAnimation: 1
+  useColorShift: 0
+  baseColor: {r: 1, g: 1, b: 1, a: 1}
+  activeColor: {r: 0, g: 0, b: 0, a: 0}
+  playerScript: {fileID: 0}
 --- !u!1 &1576975567
 GameObject:
   m_ObjectHideFlags: 0
@@ -17065,6 +17319,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1613023384}
   - component: {fileID: 1613023385}
+  - component: {fileID: 1613023386}
   m_Layer: 0
   m_Name: leaves (1)
   m_TagString: Untagged
@@ -17139,6 +17394,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1613023386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613023383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d61e2a9de9442e459831cc78d13aa45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationRadius: 2
+  swayAmount: 0.2
+  swaySpeed: 3
+  returnSpeed: 1
+  useRotationAnimation: 1
+  useScaleAnimation: 1
+  useColorShift: 0
+  baseColor: {r: 1, g: 1, b: 1, a: 1}
+  activeColor: {r: 0, g: 0, b: 0, a: 0}
+  playerScript: {fileID: 0}
 --- !u!1 &1617884186
 GameObject:
   m_ObjectHideFlags: 0
@@ -20436,6 +20713,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2005524462}
   - component: {fileID: 2005524463}
+  - component: {fileID: 2005524464}
   m_Layer: 0
   m_Name: lilypad
   m_TagString: Untagged
@@ -20510,6 +20788,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2005524464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005524461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d61e2a9de9442e459831cc78d13aa45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationRadius: 2
+  swayAmount: 0.2
+  swaySpeed: 3
+  returnSpeed: 1
+  useRotationAnimation: 1
+  useScaleAnimation: 1
+  useColorShift: 0
+  baseColor: {r: 1, g: 1, b: 1, a: 1}
+  activeColor: {r: 0, g: 0, b: 0, a: 0}
+  playerScript: {fileID: 0}
 --- !u!1 &2007697124
 GameObject:
   m_ObjectHideFlags: 0

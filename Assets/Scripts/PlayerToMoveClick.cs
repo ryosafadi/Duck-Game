@@ -9,7 +9,7 @@ public class PlayerMoveToClick : MonoBehaviour
     [Header("Movement Settings")]
     public float speed = 5f;
     private Vector2 targetPosition;
-    private bool isMoving = false;
+    public bool isMoving = false;
     private Vector3 originalScale;
 
     [Header("Boundary Settings")]
