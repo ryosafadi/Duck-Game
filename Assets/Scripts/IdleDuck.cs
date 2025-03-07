@@ -177,6 +177,7 @@ public class IdleDuck : MonoBehaviour
     {
         ourAudioSource.PlayOneShot(Quack);
         happiness = Mathf.Clamp(happiness + amount, 0, maxHappiness);
+        stamina = Mathf.Clamp(stamina + 0.3f, 0, maxStamina);
     }
 
     //three functions for feeding

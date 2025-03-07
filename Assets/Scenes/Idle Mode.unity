@@ -9290,7 +9290,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 12594468}
         m_TargetAssemblyTypeName: IdleDuck, Assembly-CSharp
-        m_MethodName: IncreaseHunger
+        m_MethodName: IncreaseHealth
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
