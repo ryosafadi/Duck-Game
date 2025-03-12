@@ -47,7 +47,7 @@ public class IdleDuck : MonoBehaviour
     //ALL OF THESE NEED TO BE REASSIGNED FOR FINAL BUILD
     private readonly float changeRate = 1f; // standard rate of change
     private readonly float healthDecayRate = 0.3f; 
-    private readonly float staminaChangeRate = 0.7f;
+    private readonly float staminaChangeRate = 0.9f;
 
     private SpriteRenderer spriteRenderer;
     private SpriteRenderer spriteAccessory;
