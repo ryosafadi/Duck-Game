@@ -152,6 +152,7 @@ public class PlayerMoveToClick : MonoBehaviour
 
     void SetRandomTargetPosition()
     {
+        return;
         // Pick a random point within the bounds of the pond collider
         Vector3 randomPoint = (Vector3)pondCollider.bounds.center +
     new Vector3(UnityEngine.Random.Range(-pondCollider.bounds.size.x / 2, pondCollider.bounds.size.x / 2),

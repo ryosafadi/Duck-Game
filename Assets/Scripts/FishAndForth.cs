@@ -15,7 +15,7 @@ public class FishAndForth : MonoBehaviour
         Vector3 playerMove = Fish.transform.position;
         stopA = playerMove;
 
-        int move = UnityEngine.Random.Range(4, 15);
+        int move = UnityEngine.Random.Range(1, 1);
         stopB = new Vector3(move, 0, 0) + playerMove;
     }
 
